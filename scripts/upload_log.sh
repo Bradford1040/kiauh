@@ -116,7 +116,7 @@ function upload_log() {
   link=$(curl -s -H "x-random;" --upload-file "${1}" 'http://paste.c-net.org/')
 
   if [[ -n ${link} ]]; then
-    ok_msg "${1} upload successfull!"
+    ok_msg "${1} upload successful!"
     echo -e "\n${cyan}###### Here is your link:${white}"
     echo -e ">>>>>> ${link}\n"
   else

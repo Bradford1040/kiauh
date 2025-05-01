@@ -96,7 +96,7 @@ def get_string_input(
     :param regex: An optional regex pattern to validate the input against
     :param exclude: List of strings which are not allowed
     :param allow_empty: Whether to allow empty input
-    :param allow_special_chars: Wheter to allow special characters in the input
+    :param allow_special_chars: Whether to allow special characters in the input
     :param default: Optional default value
     :return: The validated string value
     """

@@ -104,7 +104,7 @@ class KlipperFlashCommandHelpMenu(BaseMenu):
             ║ tool for flashing it.                                 ║
             ║                                                       ║
             ║ {subheader2:<62} ║
-            ║ Special command to flash STM32 microcontrollers in    ║
+            ║ Special command to flash STM32 micro controllers in    ║
             ║ DFU mode but connected via serial. stm32flash command ║
             ║ will be used internally.                              ║
             ║                                                       ║
@@ -147,7 +147,7 @@ class KlipperMcuConnectionHelpMenu(BaseMenu):
             ║ USB ports for connected controller boards. This will  ║
             ║ be similar to the 'ls /dev/serial/by-id/*' command    ║
             ║ suggested by the official Klipper documentation for   ║
-            ║ determining successfull USB connections!              ║
+            ║ determining successful USB connections!              ║
             ║                                                       ║
             ║ {subheader2:<62} ║
             ║ Selecting UART as the connection method will list all ║

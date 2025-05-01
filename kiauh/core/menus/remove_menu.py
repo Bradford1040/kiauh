@@ -59,7 +59,7 @@ class RemoveMenu(BaseMenu):
             ║  1) [Klipper]             │  5) [KlipperScreen]       ║
             ║  2) [Moonraker]           │                           ║
             ║                           │ Webcam Streamer:          ║
-            ║ Klipper Webinterface:     │  6) [Crowsnest]           ║
+            ║ Klipper Web Interface:    │  6) [Crowsnest]           ║
             ║  3) [Mainsail]            │                           ║
             ║  4) [Fluidd]              │                           ║
             ╟───────────────────────────┴───────────────────────────╢

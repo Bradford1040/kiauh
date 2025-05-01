@@ -76,7 +76,7 @@ def git_pull_wrapper(target_dir: Path) -> None:
 
 def get_repo_name(repo: Path) -> Tuple[str, str]:
     """
-    Helper method to extract the organisation and name of a repository |
+    Helper method to extract the organization and name of a repository |
     :param repo: repository to extract the values from
     :return: String in form of "<orga>/<name>" or None
     """
@@ -146,7 +146,7 @@ def get_local_tags(repo_path: Path, _filter: str | None = None) -> List[str]:
 
 def get_remote_tags(repo_path: str) -> List[str]:
     """
-    Gets the tags of a GitHub repostiory
+    Gets the tags of a GitHub repository
     :param repo_path: path of the GitHub repository - e.g. `<owner>/<name>`
     :return: List of tags
     """
@@ -169,7 +169,7 @@ def get_remote_tags(repo_path: str) -> List[str]:
 
 def get_latest_remote_tag(repo_path: str) -> str:
     """
-    Gets the latest stable tag of a GitHub repostiory
+    Gets the latest stable tag of a GitHub repository
     :param repo_path: path of the GitHub repository - e.g. `<owner>/<name>`
     :return: tag or empty string
     """

@@ -427,7 +427,7 @@ class KlipperFlashOverviewMenu(BaseMenu):
         menu = textwrap.dedent(
             f"""
             ╟───────────────────────────────────────────────────────╢
-            ║ Before contuining the flashing process, please check  ║
+            ║ Before continuing the flashing process, please check  ║
             ║ if all parameters were set correctly! Once you made   ║
             ║ sure everything is correct, start the process. If any ║
             ║ parameter needs to be changed, you can go back (B)    ║

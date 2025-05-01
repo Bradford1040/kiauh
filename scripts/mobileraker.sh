@@ -11,7 +11,7 @@
 
 #
 # This file is written and maintained by Patrick Schmidt author of Mobileraker
-# It is based of the kliperscreen.sh install script!
+# It is based of the klipperscreen.sh install script!
 
 
 set -e
@@ -29,7 +29,7 @@ function mobileraker_systemd() {
 function install_mobileraker() {
   ### return early if python version check fails
   if [[ $(python3_check) == "false" ]]; then
-    local error="Versioncheck failed! Python 3.7 or newer required!\n"
+    local error="Version check failed! Python 3.7 or newer required!\n"
     error="${error} Please upgrade Python."
     print_error "${error}" && return
   fi
@@ -129,11 +129,11 @@ function update_mobileraker() {
 
   do_action_service "stop" "mobileraker"
   cd "${MOBILERAKER_DIR}"
-  git pull origin main -q && ok_msg "Fetch successfull!"
-  git checkout -f main && ok_msg "Checkout successfull"
+  git pull origin main -q && ok_msg "Fetch successful!"
+  git checkout -f main && ok_msg "Checkout successful"
 
   if [[ $(md5sum "${MOBILERAKER_DIR}/scripts/mobileraker-requirements.txt" | cut -d " " -f1) != "${old_md5}" ]]; then
-    status_msg "New dependecies detected..."
+    status_msg "New dependencies detected..."
     "${MOBILERAKER_ENV}"/bin/pip install -r "${MOBILERAKER_DIR}/scripts/mobileraker-requirements.txt"
     ok_msg "Dependencies have been installed!"
   fi

@@ -1,7 +1,7 @@
 # /etc/nginx/sites-available/fluidd
 
 server {
-    listen 80;
+    listen [::]:80;
 
     access_log /var/log/nginx/fluidd-access.log;
     error_log /var/log/nginx/fluidd-error.log;

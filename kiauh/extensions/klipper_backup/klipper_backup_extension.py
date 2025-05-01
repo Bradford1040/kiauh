@@ -105,7 +105,7 @@ class KlipperbackupExtension(BaseExtension):
                     if unit_file_exists(service_name, unit_type):
                         uninstall_service(service_name, unit_type)
 
-            # Remnove crontab entry
+            # Remove crontab entry
             try:
                 if check_crontab_entry("/klipper-backup/script.sh"):
                     Logger.print_status("Removing Klipper-Backup crontab entry ...")

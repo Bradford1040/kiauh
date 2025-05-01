@@ -97,7 +97,7 @@ class SysDepsParser:
                 continue
             elif last_logical_op is None:
                 logging.info(
-                    f"Requirement specifier contains two seqential expressions "
+                    f"Requirement specifier contains two sequential expressions "
                     f"without a logical operator: {full_spec}"
                 )
                 return None

@@ -116,7 +116,7 @@ class MainMenu(BaseMenu):
         elif code == 2:
             color = Color.GREEN
 
-        return Color.apply(f"{status}{count}", color)
+        return str(Color.apply(f"{status}{count}", color))
 
     def print_menu(self) -> None:
         self._fetch_status()

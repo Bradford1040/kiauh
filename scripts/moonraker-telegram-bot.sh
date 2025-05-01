@@ -12,7 +12,7 @@
 set -e
 
 #===================================================#
-#========== INSTALL MOONRAKERTELEGRAMBOT ===========#
+#==========INSTALL MOONRAKER TELEGRAM BOT===========#
 #===================================================#
 
 function telegram_bot_systemd() {
@@ -72,7 +72,7 @@ function telegram_bot_setup_dialog() {
       (( telegram_bot_count > moonraker_count )) && error_msg "Number of Telegram Bot instances larger than existing Moonraker instances"
     done && select_msg "${telegram_bot_count}"
   else
-    log_error "Internal error. moonraker_count of '${moonraker_count}' not equal or grather than one!"
+    log_error "Internal error. moonraker_count of '${moonraker_count}' not equal or greater than one!"
     return 1
   fi
 
@@ -328,7 +328,7 @@ function write_telegram_bot_service() {
 
 
 #===================================================#
-#=========== REMOVE MOONRAKERTELEGRAMBOT ===========#
+#===========REMOVE MOONRAKER TELEGRAM BOT===========#
 #===================================================#
 
 function remove_telegram_bot_systemd() {
@@ -417,7 +417,7 @@ function remove_telegram_bot() {
 }
 
 #===================================================#
-#=========== UPDATE MOONRAKERTELEGRAMBOT ===========#
+#===========UPDATE MOONRAKER TELEGRAM BOT===========#
 #===================================================#
 
 function update_telegram_bot() {
@@ -440,7 +440,7 @@ function update_telegram_bot() {
 }
 
 #===================================================#
-#=========== MOONRAKERTELEGRAMBOT STATUS ===========#
+#===========MOONRAKER TELEGRAM BOT STATUS===========#
 #===================================================#
 
 function get_telegram_bot_status() {

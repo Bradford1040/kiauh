@@ -147,7 +147,7 @@ EOF
 
   print_confirm "${confirm_msg}"
 
-  ### print webcam ip adress/url
+  ### print webcam ip address/url
   local ip
   ip=$(hostname -I | cut -d" " -f1)
   local cam_url="http://${ip}:8080/?action=stream"

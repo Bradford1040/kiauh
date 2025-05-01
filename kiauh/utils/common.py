@@ -44,8 +44,8 @@ def get_kiauh_version() -> str:
     Helper method to get the current KIAUH version by reading the latest tag
     :return: string of the latest tag
     """
-    lastest_tag: str = get_local_tags(Path(__file__).parent.parent)[-1]
-    return lastest_tag
+    latest_tag: str = get_local_tags(Path(__file__).parent.parent)[-1]
+    return latest_tag
 
 
 def convert_camelcase_to_kebabcase(name: str) -> str:
@@ -102,7 +102,7 @@ def get_install_status(
     :param env_dir: the python environment directory
     :param instance_type: The component type
     :param files: List of optional files to check for existence
-    :return: Dictionary with status string, statuscode and instance count
+    :return: Dictionary with status string, status code and instance count
     """
     from utils.instance_utils import get_instances
 

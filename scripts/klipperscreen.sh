@@ -24,7 +24,7 @@ function klipperscreen_systemd() {
 function install_klipperscreen() {
   ### return early if python version check fails
   if [[ $(python3_check) == "false" ]]; then
-    local error="Versioncheck failed! Python 3.7 or newer required!\n"
+    local error="Version check failed! Python 3.7 or newer required!\n"
     error="${error} Please upgrade Python."
     print_error "${error}" && return
   fi
@@ -122,11 +122,11 @@ function update_klipperscreen() {
   backup_before_update "klipperscreen"
 
   cd "${KLIPPERSCREEN_DIR}"
-  git pull origin master -q && ok_msg "Fetch successfull!"
-  git checkout -f master && ok_msg "Checkout successfull"
+  git pull origin master -q && ok_msg "Fetch successful!"
+  git checkout -f master && ok_msg "Checkout successful"
 
   if [[ $(md5sum "${KLIPPERSCREEN_DIR}/scripts/KlipperScreen-requirements.txt" | cut -d " " -f1) != "${old_md5}" ]]; then
-    status_msg "New dependecies detected..."
+    status_msg "New dependencies detected..."
     "${KLIPPERSCREEN_ENV}"/bin/pip install -r "${KLIPPERSCREEN_DIR}/scripts/KlipperScreen-requirements.txt"
     ok_msg "Dependencies have been installed!"
   fi

@@ -162,7 +162,7 @@ class UpdateMenu(BaseMenu):
             ║  1) Klipper           │ {self.klipper_local:<22} │ {self.klipper_remote:<22} ║
             ║  2) Moonraker         │ {self.moonraker_local:<22} │ {self.moonraker_remote:<22} ║
             ║                       │               │               ║
-            ║ Webinterface:         ├───────────────┼───────────────╢
+            ║ Web Interface:        ├───────────────┼───────────────╢
             ║  3) Mainsail          │ {self.mainsail_local:<22} │ {self.mainsail_remote:<22} ║
             ║  4) Fluidd            │ {self.fluidd_local:<22} │ {self.fluidd_remote:<22} ║
             ║                       │               │               ║
@@ -264,7 +264,7 @@ class UpdateMenu(BaseMenu):
         elif local_version != remote_version:
             color = Color.YELLOW
 
-        return Color.apply(local_version or "-", color)
+        return Color.apply(str(local_version or "-"), color) if local_version or remote_version else "-"
 
     def _set_status_data(self, name: str, status_fn: Callable, *args) -> None:
         comp_status: ComponentStatus = status_fn(*args)
@@ -287,7 +287,7 @@ class UpdateMenu(BaseMenu):
         setattr(self, f"{name}_remote", remote_txt)
 
     def _check_is_installed(self, name: str) -> bool:
-        return self.status_data[name]["installed"]
+        return bool(self.status_data[name]["installed"])
 
     def _is_update_available(self, name: str) -> bool:
         return self.status_data[name]["local"] != self.status_data[name]["remote"]

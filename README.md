@@ -53,7 +53,7 @@ and enable SSH and configure Wi-Fi.
 * If you need more help for using the Raspberry Pi Imager, please visit the [official documentation](https://www.raspberrypi.com/documentation/computers/getting-started.html).
 
 These steps **only** apply if you are actually using a Raspberry Pi. In case you want
-to use a different SBC (like an Orange Pi or any other Pi derivates), please look up on how to get an appropriate Linux image flashed
+to use a different SBC (like an Orange Pi or any other Pi derivatives), please look up on how to get an appropriate Linux image flashed
 to the SD card before proceeding further (usually done with Balena Etcher in those cases). Also make sure that KIAUH will be able to run
 and operate on the Linux Distribution you are going to flash. You likely will have the most success with
 distributions based on Debian 11 Bullseye. Read the notes further down below in this document.
@@ -71,7 +71,7 @@ sudo apt-get update && sudo apt-get install git -y
 Once git is installed, use the following command to download KIAUH into your home-directory:
 
 ```shell
-cd ~ && git clone https://github.com/dw-0/kiauh.git
+cd ~ && git clone -b devel-v1.1.0 --single-branch https://github.com/Bradford1040/kiauh.git ~/kiauh
 ```
 
 * **Step 3:** \

@@ -32,7 +32,7 @@ function multi_instance_message(){
   continue_config
 }
 
-# Helper funcs
+# Helper functions
 function clone_crowsnest(){
   $(command -v git) clone "${CROWSNEST_REPO}" -b master "${CROWSNEST_DIR}"
 }
@@ -135,7 +135,7 @@ function remove_crowsnest(){
   print_confirm "Crowsnest successfully removed!"
 }
 
-# Status funcs
+# Status functions
 get_crowsnest_status(){
   local -a files
   local env_file
@@ -162,7 +162,7 @@ get_crowsnest_status(){
   fi
 }
 
-# Update funcs
+# Update functions
 # Shameless stolen from KlipperScreen.sh
 function get_local_crowsnest_commit() {
   [[ ! -d ${CROWSNEST_DIR} || ! -d "${CROWSNEST_DIR}/.git" ]] && return

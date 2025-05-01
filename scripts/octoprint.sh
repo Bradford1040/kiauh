@@ -69,7 +69,7 @@ function octoprint_setup_dialog() {
     done && select_msg "${octoprint_count}"
 
   else
-    log_error "Internal error. klipper_count of '${klipper_count}' not equal or grather than one!"
+    log_error "Internal error. klipper_count of '${klipper_count}' not equal or greater than one!"
     return 1
   fi
 

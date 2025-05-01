@@ -321,7 +321,7 @@ class KiauhSettings:
             DialogType.ATTENTION,
             [
                 "Deprecated repository configuration found!",
-                "KAIUH can now attempt to automatically migrate your configuration.",
+                "KIAUH can now attempt to automatically migrate your configuration.",
                 "\n\n",
                 *migration_1,
             ],

@@ -176,7 +176,8 @@ class BaseMenu(metaclass=PostInitCaller):
         if not self.spinner and state:
             self.spinner = Spinner(self.loading_msg)
             self.spinner.start()
-        else:
+        elif self.spinner and not state:
+            # Only stop if the spinner exists and state is False
             self.spinner.stop()
             self.spinner = None
 

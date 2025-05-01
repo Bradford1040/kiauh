@@ -82,7 +82,7 @@ class SimplyPrintExtension(BaseExtension):
             *mr_names,
             "\n\n",
             f"The setup will {_type} SimplyPrint for all Moonraker instances. "
-            f"After {_type}ation, all Moonraker services will be restarted!",
+            f"After {_type}action, all Moonraker services will be restarted!",
         ]
 
     def _patch_moonraker_confs(

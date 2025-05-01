@@ -71,7 +71,7 @@ class BackupMenu(BaseMenu):
             ║  3) [Config Folder]       │                           ║
             ║  4) [Moonraker Database]  │ Touchscreen GUI:          ║
             ║                           │  9) [KlipperScreen]       ║
-            ║ Webinterface:             │                           ║
+            ║ Web Interface:            │                           ║
             ║  5) [Mainsail]            │                           ║
             ║  6) [Fluidd]              │                           ║
             ╟───────────────────────────┴───────────────────────────╢

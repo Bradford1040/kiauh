@@ -275,7 +275,7 @@ function do_action_service() {
 
       if sudo systemctl "${action}" "${service}"; then
         log_info "${service}: ${action} > success"
-        ok_msg "${action^} ${service} successfull!"
+        ok_msg "${action^} ${service} successful!"
       else
         log_warning "${service}: ${action} > failed"
         warn_msg "${action^} ${service} failed!"
@@ -512,7 +512,7 @@ function set_custom_hostname() {
   echo
   top_border
   echo -e "|  Changing the hostname of this machine allows you to  |"
-  echo -e "|  access a webinterface that is configured for port 80 |"
+  echo -e "|  access a web interface that is configured for port 80 |"
   echo -e "|  by simply typing '<hostname>.local' in the browser.  |"
   echo -e "|                                                       |"
   echo -e "|  E.g.: If you set the hostname to 'my-printer' you    |"
@@ -628,7 +628,7 @@ function get_instance_name() {
 ###
 # returns the instance name/identifier of the klipper service
 # if the klipper service is part of a multi instance setup
-# otherwise returns an emtpy string
+# otherwise returns an empty string
 #
 # @param {string}: name - klipper service name (e.g. klipper-name.service)
 #

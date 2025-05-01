@@ -67,23 +67,23 @@ class SimpleConfigParser:
         self.in_option_block: bool = False
 
     def _match_section(self, line: str) -> bool:
-        """Wheter or not the given line matches the definition of a section"""
+        """Whether or not the given line matches the definition of a section"""
         return SECTION_RE.match(line) is not None
 
     def _match_option(self, line: str) -> bool:
-        """Wheter or not the given line matches the definition of an option"""
+        """Whether or not the given line matches the definition of an option"""
         return OPTION_RE.match(line) is not None
 
     def _match_options_block_start(self, line: str) -> bool:
-        """Wheter or not the given line matches the definition of a multiline option"""
+        """Whether or not the given line matches the definition of a multiline option"""
         return OPTIONS_BLOCK_START_RE.match(line) is not None
 
     def _match_line_comment(self, line: str) -> bool:
-        """Wheter or not the given line matches the definition of a comment"""
+        """Whether or not the given line matches the definition of a comment"""
         return LINE_COMMENT_RE.match(line) is not None
 
     def _match_empty_line(self, line: str) -> bool:
-        """Wheter or not the given line matches the definition of an empty line"""
+        """Whether or not the given line matches the definition of an empty line"""
         return EMPTY_LINE_RE.match(line) is not None
 
     def _parse_line(self, line: str) -> None:

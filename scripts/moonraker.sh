@@ -41,7 +41,7 @@ function moonraker_setup_dialog() {
 
   ### return early if python version check fails
   if [[ $(python3_check) == "false" ]]; then
-    local error="Versioncheck failed! Python 3.7 or newer required!\n"
+    local error="Version check failed! Python 3.7 or newer required!\n"
     error="${error} Please upgrade Python."
     print_error "${error}" && return
   fi
@@ -103,7 +103,7 @@ function moonraker_setup_dialog() {
       (( moonraker_count > klipper_count )) && error_msg "Number of Moonraker instances larger than installed Klipper instances"
     done && select_msg "${moonraker_count}"
   else
-    log_error "Internal error. klipper_count of '${klipper_count}' not equal or grather than one!"
+    log_error "Internal error. klipper_count of '${klipper_count}' not equal or greater than one!"
     return 1
   fi
 
@@ -226,7 +226,7 @@ class SysDepsParser:
                 continue
             elif last_logical_op is None:
                 logging.info(
-                    f"Requirement specifier contains two seqential expressions "
+                    f"Requirement specifier contains two sequential expressions "
                     f"without a logical operator: {full_spec}")
                 return None
             dep_parts = re.split(r"(==|!=|<=|>=|<|>)", exp.strip())
@@ -571,7 +571,7 @@ function install_moonraker_polkit() {
       status_msg "Adding moonraker-admin supplementary group to ${service} ..."
       sudo sed -i "/^Type=simple$/a SupplementaryGroups=moonraker-admin" "${service}"
       require_daemon_reload="true"
-      ok_msg "Adding moonraker-admin supplementary group successfull!"
+      ok_msg "Adding moonraker-admin supplementary group successful!"
     fi
   done
 

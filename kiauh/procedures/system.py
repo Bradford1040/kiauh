@@ -26,12 +26,12 @@ def change_system_hostname() -> None:
         DialogType.CUSTOM,
         [
             "Changing the hostname of this system allows you to access an installed "
-            "webinterface by simply typing the hostname like this in the browser:",
+            "web interface by simply typing the hostname like this in the browser:",
             "\n\n",
             "http://<hostname>.local",
             "\n\n",
             "Example: If you set your hostname to 'my-printer', you can access an "
-            "installed webinterface by typing 'http://my-printer.local' in the "
+            "installed web interface by typing 'http://my-printer.local' in the "
             "browser.",
         ],
         custom_title="CHANGE SYSTEM HOSTNAME",

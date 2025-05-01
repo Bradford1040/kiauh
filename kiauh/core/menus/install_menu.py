@@ -64,7 +64,7 @@ class InstallMenu(BaseMenu):
             ║  1) [Klipper]             │  7) [KlipperScreen]       ║
             ║  2) [Moonraker]           │                           ║
             ║                           │ Webcam Streamer:          ║
-            ║ Webinterface:             │  8) [Crowsnest]           ║
+            ║ Web Interface:            │  8) [Crowsnest]           ║
             ║  3) [Mainsail]            │                           ║
             ║  4) [Fluidd]              │                           ║
             ║                           │                           ║

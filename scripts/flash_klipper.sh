@@ -12,7 +12,7 @@
 set -e
 
 function init_flash_process() {
-  ### step 1: check for required userhgroups (tty & dialout)
+  ### step 1: check for required user groups (tty & dialout)
   check_usergroups
 
   top_border
@@ -236,7 +236,7 @@ function start_flash_mcu() {
   do_action_service "stop" "klipper"
 
   if make ${flash_command} FLASH_DEVICE="${device}"; then
-    ok_msg "Flashing successfull!"
+    ok_msg "Flashing successful!"
   else
     warn_msg "Flashing failed!"
     warn_msg "Please read the console output above!"
@@ -309,8 +309,8 @@ function start_flash_sd() {
   ###flash process
   do_action_service "stop" "klipper"
   if "${flash_script}" -b "${selected_baud_rate}" "${device}" "${selected_board}"; then
-    print_confirm "Flashing successfull!"
-    log_info "Flash successfull!"
+    print_confirm "Flashing successful!"
+    log_info "Flash successful!"
   else
     print_error "Flashing failed!\n Please read the console output above!"
     log_error "Flash failed!"
@@ -437,7 +437,7 @@ function show_mcu_flash_command_help() {
   echo -e "| tool for flashing it.                                 |"
   blank_line
   echo -e "| ${cyan}make serialflash:${white}                                     |"
-  echo -e "| Special command to flash STM32 microcontrollers in    |"
+  echo -e "| Special command to flash STM32 micro controllers in   |"
   echo -e "| DFU mode but connected via serial. stm32flash command |"
   echo -e "| will be used internally.                              |"
   blank_line
@@ -466,7 +466,7 @@ function show_mcu_connection_help() {
   echo -e "| USB ports for connected controller boards. This will  |"
   echo -e "| be similar to the 'ls /dev/serial/by-id/*' command    |"
   echo -e "| suggested by the official Klipper documentation for   |"
-  echo -e "| determining successfull USB connections!              |"
+  echo -e "| determining successful USB connections!              |"
   blank_line
   echo -e "| ${cyan}UART:${white}                                                 |"
   echo -e "| Selecting UART as the connection method will list all |"

@@ -72,8 +72,8 @@ def add_config_section_at_top(section: str, instances: List[InstanceType]) -> No
         with open(tmp_cfg_path, "a") as tmp:
             tmp.writelines(org_content)
 
-        cfg_file.unlink()
-        shutil.move(tmp_cfg_path, cfg_file)
+        cfg_file.unlink(missing_ok=True)  # Use Path.unlink() for Path objects
+        shutil.move(tmp_cfg_path.as_posix(), cfg_file.as_posix())  # Convert Path to str for shutil.move
 
         Logger.print_ok("OK!")
 
@@ -81,7 +81,7 @@ def add_config_section_at_top(section: str, instances: List[InstanceType]) -> No
 def remove_config_section(
     section: str, instances: List[InstanceType]
 ) -> List[InstanceType]:
-    removed_from: List[instances] = []
+    removed_from: List[InstanceType] = []
     for instance in instances:
         cfg_file = instance.cfg_file
         Logger.print_status(f"Remove section '[{section}]' from '{cfg_file}' ...")

@@ -246,7 +246,7 @@ function detect_conflicting_packages() {
       echo -e "| ${red}● haproxy${white}                                             |"
       blank_line
       echo -e "| Having those packages installed can lead to unwanted  |"
-      echo -e "| behaviour. It's recommended to remove those packages. |"
+      echo -e "| behavior. It's recommended to remove those packages.  |"
       echo -e "|                                                       |"
       echo -e "| ${green}1) Remove packages (recommend)${white}                        |"
       echo -e "| 2) Disable only (may still cause issues)              |"

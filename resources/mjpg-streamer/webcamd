@@ -25,7 +25,7 @@ echo ""
 cfg_files=()
 #cfg_files+=/boot/mainsail.txt
 if [[ -d ${config_dir} ]]; then
-  cfg_files+=( `ls ${config_dir}/webcam*.txt` )
+cfg_files+=( `ls ${config_dir}/webcam*.txt` )
 fi
 
 array_camera_config=()
@@ -41,59 +41,59 @@ array_assigned_device=()
 
 echo "--- Configuration: ----------------------------"
 for cfg_file in ${cfg_files[@]}; do
-  # init configuration - DO NOT EDIT, USE /home/pi/klipper_config/webcam*.txt INSTEAD!
-  camera="auto"
-  camera_usb_options="-r 640x480 -f 10"
-  camera_raspi_options="-fps 10"
-  camera_http_webroot="./www-mjpgstreamer"
-  camera_http_options="-n"
-  additional_brokenfps_usb_devices=()
+# init configuration - DO NOT EDIT, USE /home/pi/klipper_config/webcam*.txt INSTEAD!
+camera="auto"
+camera_usb_options="-r 640x480 -f 10"
+camera_raspi_options="-fps 10"
+camera_http_webroot="./www-mjpgstreamer"
+camera_http_options="-n"
+additional_brokenfps_usb_devices=()
 
-  if [[ -e ${cfg_file} ]]; then
-      source "$cfg_file"
-  fi
-  usb_options="$camera_usb_options"
+if [[ -e ${cfg_file} ]]; then
+    source "$cfg_file"
+fi
+usb_options="$camera_usb_options"
 
-  # if webcam device is explicitly given in /home/pi/klipper_config/webcam*.txt, save the path of the device
-  # to a variable and remove its parameter from usb_options
-  extracted_device=`echo $usb_options | sed 's@.*-d \(/dev/\(video[0-9]\+\|v4l/[^ ]*\)\).*@\1@'`
-  if [ "$extracted_device" != "$usb_options" ]
-  then
+# if webcam device is explicitly given in /home/pi/klipper_config/webcam*.txt, save the path of the device
+# to a variable and remove its parameter from usb_options
+extracted_device=`echo $usb_options | sed 's@.*-d \(/dev/\(video[0-9]\+\|v4l/[^ ]*\)\).*@\1@'`
+if [ "$extracted_device" != "$usb_options" ]
+then
     # the camera options refer to a device, save it in a variable
     # replace video device parameter with empty string and strip extra whitespace
     usb_options=`echo $usb_options | sed 's/\-d \/dev\/\(video[0-9]\+\|v4l\/[^ ]*\)//g' | awk '$1=$1'`
-  else
+else
     extracted_device=""
-  fi
+fi
 
-  # echo configuration
-  echo "cfg_file:      $cfg_file"
-  echo "camera:        $camera"
-  echo "usb options:   $camera_usb_options"
-  echo "raspi options: $camera_raspi_options"
-  echo "http options:  -w $camera_http_webroot $camera_http_options"
-  echo ""
-  echo "Explicitly USB device: $extracted_device"
-  echo "-----------------------------------------------"
-  echo ""
+# echo configuration
+echo "cfg_file:      $cfg_file"
+echo "camera:        $camera"
+echo "usb options:   $camera_usb_options"
+echo "raspi options: $camera_raspi_options"
+echo "http options:  -w $camera_http_webroot $camera_http_options"
+echo ""
+echo "Explicitly USB device: $extracted_device"
+echo "-----------------------------------------------"
+echo ""
 
-  array_camera_config+=( $cfg_file )
-  array_camera+=( $camera )
-  array_camera_usb_options+=("$usb_options")
-  array_camera_usb_device+=("$extracted_device")
-  array_camera_raspi_options+=("$camera_raspi_options")
-  array_camera_http_webroot+=("$camera_http_webroot")
-  array_camera_http_options+=("$camera_http_options")
-  array_camera_brokenfps_usb_devices+=("${brokenfps_usb_devices[*]} ${additional_brokenfps_usb_devices[*]}")
-  array_camera_device+=("")
+array_camera_config+=( $cfg_file )
+array_camera+=( $camera )
+array_camera_usb_options+=("$usb_options")
+array_camera_usb_device+=("$extracted_device")
+array_camera_raspi_options+=("$camera_raspi_options")
+array_camera_http_webroot+=("$camera_http_webroot")
+array_camera_http_options+=("$camera_http_options")
+array_camera_brokenfps_usb_devices+=("${brokenfps_usb_devices[*]} ${additional_brokenfps_usb_devices[*]}")
+array_camera_device+=("")
 done
 
 # check if array contains a string
 function containsString() {
-  local e match="$1"
-  shift
-  for e; do [[ "$e" == "$match" ]] && return 0; done
-  return 1
+local e match="$1"
+shift
+for e; do [[ "$e" == "$match" ]] && return 0; done
+return 1
 }
 
 # cleans up when the script receives a SIGINT or SIGTERM
@@ -212,24 +212,24 @@ vcgencmd version > /dev/null 2>&1
 # keep mjpg streamer running if some camera is attached
 while true; do
 
-  # get list of usb video devices into an array
-  video_devices=($(find /dev -regextype sed -regex '\/dev/video[0-9]\+' | sort -nk1.11 2> /dev/null))
+# get list of usb video devices into an array
+video_devices=($(find /dev -regextype sed -regex '\/dev/video[0-9]\+' | sort -nk1.11 2> /dev/null))
 
-  # add list of raspi camera into an array
-  if [ "`vcgencmd get_camera`" = "supported=1 detected=1" ]; then
+# add list of raspi camera into an array
+if [ "`vcgencmd get_camera`" = "supported=1 detected=1" ]; then
     video_devices+=( "raspi" )
-  fi
+fi
 
-  echo "Found video devices:"
-  printf '%s\n' "${video_devices[@]}"
+echo "Found video devices:"
+printf '%s\n' "${video_devices[@]}"
 
-  for scan_mode in "usb" "usb-auto" "raspi" "auto"; do
+for scan_mode in "usb" "usb-auto" "raspi" "auto"; do
     camera=$scan_mode
     if [[ "usb-auto" == "$scan_mode" ]]; then
-      camera="usb"
+    camera="usb"
     fi
     for ((i=0;i<${#array_camera[@]};i++));  do
-      if [[ -z ${array_camera_device[${i}]} ]] && [[ $camera == ${array_camera[${i}]} ]]; then
+    if [[ -z ${array_camera_device[${i}]} ]] && [[ $camera == ${array_camera[${i}]} ]]; then
         camera_config="${array_camera_config[${i}]}"
         usb_options="${array_camera_usb_options[${i}]}"
         camera_usb_device="${array_camera_usb_device[${i}]}"
@@ -238,66 +238,66 @@ while true; do
         camera_http_options="${array_camera_http_options[${i}]}"
         brokenfps_usb_devices="${array_camera_brokenfps_usb_devices[${i}]}"
         if [[ ${camera_usb_device} ]] && { [[ "usb" == ${scan_mode} ]] || [[ "auto" == ${scan_mode} ]]; }; then
-           # usb device is explicitly set in options
-          usb_device_path=`readlink -f ${camera_usb_device}`
-          if containsString "$usb_device_path" "${array_camera_device[@]}"; then
+        # usb device is explicitly set in options
+        usb_device_path=`readlink -f ${camera_usb_device}`
+        if containsString "$usb_device_path" "${array_camera_device[@]}"; then
             if [[ "auto" != ${scan_mode} ]]; then
-              array_camera_device[${i}]="alredy_in_use"
-              echo "config file='$camera_config':Video device already in use."
-              continue
+            array_camera_device[${i}]="already_in_use"
+            echo "config file='$camera_config':Video device already in use."
+            continue
             fi
-          elif containsString "$usb_device_path" "${video_devices[@]}"; then
+        elif containsString "$usb_device_path" "${video_devices[@]}"; then
             array_camera_device[${i}]="$usb_device_path"
             # explicitly set usb device was found in video_devices array, start usb with the found device
             echo "config file='$camera_config':USB device was set in options and found in devices, start MJPG-streamer with the configured USB video device: $usb_device_path"
             startUsb "$usb_device_path"
             continue
-          fi
+        fi
         elif [[ -z ${camera_usb_device} ]] && { [[ "usb-auto" == ${scan_mode} ]] || [[ "auto" == ${scan_mode} ]]; }; then
-          for video_device in "${video_devices[@]}"; do
+        for video_device in "${video_devices[@]}"; do
             if [[ "raspi" != "$video_device" ]]; then
-              if containsString "$video_device" "${array_camera_device[@]}"; then
+            if containsString "$video_device" "${array_camera_device[@]}"; then
                 : #already in use
-              else
+            else
                 array_camera_device[${i}]="$video_device"
                 # device is not set explicitly in options, start usb with first found usb camera as the device
                 echo "config file='$camera_config':USB device was not set in options, start MJPG-streamer with the first found video device: ${video_device}"
                 startUsb "${video_device}"
                 break
-              fi
             fi
-          done
-          if [[ -n ${array_camera_device[${i}]} ]]; then
+            fi
+        done
+        if [[ -n ${array_camera_device[${i}]} ]]; then
             continue
-          fi
+        fi
         fi
         if [[ "raspi" == ${scan_mode} ]] || [[ "auto" == ${scan_mode} ]]; then
-          video_device="raspi"
-          if containsString "$video_device" "${array_camera_device[@]}"; then
+        video_device="raspi"
+        if containsString "$video_device" "${array_camera_device[@]}"; then
             if [[ "auto" != ${scan_mode} ]]; then
-              array_camera_device[${i}]="alredy_in_use"
-              echo "config file='$camera_config':RasPiCam device already in use."
+            array_camera_device[${i}]="already_in_use"
+            echo "config file='$camera_config':RasPiCam device already in use."
             fi
-          elif containsString "$video_device" "${video_devices[@]}"; then
+        elif containsString "$video_device" "${video_devices[@]}"; then
             array_camera_device[${i}]="$video_device"
             echo "config file='$camera_config':Start MJPG-streamer with video device: ${video_device}"
             startRaspi
             sleep 30 &
             sleep_pid=$!
             wait ${sleep_pid}
-          fi
         fi
-      fi
+        fi
+    fi
     done
-  done
-  array_assigned_device=( ${array_camera_device[*]} )
-  if [[ ${#array_camera[@]} -eq ${#array_assigned_device[@]} ]]; then
+done
+array_assigned_device=( ${array_camera_device[*]} )
+if [[ ${#array_camera[@]} -eq ${#array_assigned_device[@]} ]]; then
     echo "Done bring up all configured video device"
     exit 0
-  else
+else
     echo "Scan again in two minutes"
     sleep 120 &
     sleep_pid=$!
     wait ${sleep_pid}
-  fi
+fi
 done

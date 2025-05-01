@@ -91,7 +91,7 @@ class KlipperNoBoardTypesErrorMenu(BaseMenu):
             ║                                                       ║
             ║ Make sure, that:                                      ║
             ║ ● the folder '~/klipper' and all its content exist    ║
-            ║ ● the content of folder '~/klipper' is not currupted  ║
+            ║ ● the content of folder '~/klipper' is not corrupted  ║
             ║ ● the file '~/klipper/scripts/flash-sd.py' exist      ║
             ║ ● your current user has access to those files/folders ║
             ║                                                       ║

@@ -128,7 +128,7 @@ function moonraker_obico_setup_dialog() {
       if (( existing_moonraker_obico_count > 0 )); then
         printf "|${green}%-55s${white}|\n" " ${existing_moonraker_obico_count} Obico instances already installed!"
         for svc in ${moonraker_obico_services}; do
-          printf "|${cyan}%-57s${white}|\n" " ● moonraker-obco-$(get_instance_name "${svc}")"
+          printf "|${cyan}%-57s${white}|\n" " ● moonraker-obico-$(get_instance_name "${svc}")"
         done
       fi
       blank_line
@@ -152,7 +152,7 @@ function moonraker_obico_setup_dialog() {
         (( new_moonraker_obico_count > allowed_moonraker_obico_count )) && error_msg "Number of Obico instances larger than installed Moonraker instances"
       done && select_msg "${new_moonraker_obico_count}"
     else
-      log_error "Internal error. moonraker_count of '${moonraker_count}' not equal or grather than one!"
+      log_error "Internal error. moonraker_count of '${moonraker_count}' not equal or greater than one!"
       return 1
     fi  # (( moonraker_count == 1 ))
 
@@ -196,7 +196,7 @@ function moonraker_obico_setup_dialog() {
     ### Step 5: Clone the moonraker-obico repo
     clone_moonraker_obico "${MOONRAKER_OBICO_REPO}"
 
-    ### step 6: call moonrake-obico/install.sh with the correct params
+    ### step 6: call moonraker-obico/install.sh with the correct params
     local port=7125
     local instance_cfg_dirs
     local instance_log_dirs

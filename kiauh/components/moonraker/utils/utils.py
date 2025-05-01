@@ -101,22 +101,25 @@ def create_example_moonraker_conf(
         Logger.print_error(f"Unable to create example moonraker.conf:\n{e}")
         return
 
-    ports = [
-        ports_map.get(instance)
-        for instance in ports_map
-        if ports_map.get(instance) is not None
+    # Get all currently assigned ports, filtering out potential None values
+    assigned_ports: List[int] = [
+        p for p in ports_map.values() if p is not None
     ]
-    if ports_map.get(instance.suffix) is None:
-        # this could be improved to not increment the max value of the ports list and assign it as the port
-        # as it can lead to situation where the port for e.g. instance moonraker-2 becomes 7128 if the port
-        # of moonraker-1 is 7125 and moonraker-3 is 7127 and there are moonraker.conf files for moonraker-1
-        # and moonraker-3 already. though, there does not seem to be a very reliable way of always assigning
-        # the correct port to each instance and the user will likely be required to correct the value manually.
-        port = max(ports) + 1 if ports else MOONRAKER_DEFAULT_PORT
-    else:
-        port = ports_map.get(instance.suffix)
 
-    ports_map[instance.suffix] = port
+    # Determine the port for the current instance
+    current_instance_port = ports_map.get(instance.suffix)
+    if current_instance_port is None:
+        # Assign a new port if the current instance doesn't have one yet
+        if assigned_ports:
+            # Increment the highest assigned port
+            port = max(assigned_ports) + 1
+        else:
+            # No other ports assigned, use the default
+            port = MOONRAKER_DEFAULT_PORT
+        ports_map[instance.suffix] = port # Update the map with the new port
+    else:
+        # Use the existing port if the current instance already has one
+        port = current_instance_port
 
     ip = get_ipv4_addr().split(".")[:2]
     ip.extend(["0", "0/16"])
