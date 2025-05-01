@@ -10,14 +10,14 @@
 </p>
 
 <p align="center">
-  <a><img src="https://img.shields.io/github/license/dw-0/kiauh"></a>
-  <a><img src="https://img.shields.io/github/stars/dw-0/kiauh"></a>
-  <a><img src="https://img.shields.io/github/forks/dw-0/kiauh"></a>
-  <a><img src="https://img.shields.io/github/languages/top/dw-0/kiauh?logo=gnubash&logoColor=white"></a>
-  <a><img src="https://img.shields.io/github/v/tag/dw-0/kiauh"></a>
+  <a><img src="https://img.shields.io/github/license/Bradford1040/kiauh"></a>
+  <a><img src="https://img.shields.io/github/stars/Bradford1040/kiauh"></a>
+  <a><img src="https://img.shields.io/github/forks/Bradford1040/kiauh"></a>
+  <a><img src="https://img.shields.io/github/languages/top/Bradford1040/kiauh?logo=gnubash&logoColor=white"></a>
+  <a><img src="https://img.shields.io/github/v/tag/Bradford1040/kiauh"></a>
   <br />
-  <a><img src="https://img.shields.io/github/last-commit/dw-0/kiauh"></a>
-  <a><img src="https://img.shields.io/github/contributors/dw-0/kiauh"></a>
+  <a><img src="https://img.shields.io/github/last-commit/Bradford1040/kiauh"></a>
+  <a><img src="https://img.shields.io/github/contributors/Bradford1040/kiauh"></a>
 </p>
 
 <hr>
